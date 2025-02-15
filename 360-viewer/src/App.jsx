@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import loadKrpano from './loadKrpano';
-import HandleMouseClick from "./components/mouseLocator.jsx"
+import HandleMouseClick from "./components/MouseLocater.jsx"
 import './App.css';
 
 function App() {

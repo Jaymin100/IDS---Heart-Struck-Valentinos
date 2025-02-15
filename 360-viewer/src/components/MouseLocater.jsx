@@ -7,10 +7,12 @@ const HandleMouseClick = (e) => {
       const view = krpano.getview(mouseX, mouseY);
       const ath = view.ath;
       const atv = view.atv;
-  
+      const kpranoCords = (krpano.screentosphere(ath,atv));
       console.log(`Mouse click at ath: ${ath}, atv: ${atv}`);
+      console.log(`Krpano Cords: ${kpranoCords}`);
+      
     } else {
       console.error('krpano is not loaded.');
     }
   };
-  
+  export default HandleMouseClick;

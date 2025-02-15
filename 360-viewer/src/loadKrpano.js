@@ -7,6 +7,7 @@ const loadKrpano = () => {
 
   function onKRPanoReady(krpano) {
     try {
+      window.krpano = krpano; // Attach krpano to the global window object
       krpano.call(`loadxml(${xmlStr})`);
     } catch (err) {
       console.error("Error loading krpano xml", err);
