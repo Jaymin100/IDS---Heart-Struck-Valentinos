@@ -1,0 +1,18 @@
+{
+    "hotspots": [
+        {
+            "id": 3,
+            "scene_id": "scene1",
+            "ath": 49,
+            "atv": 47,
+            "metadata": "Test Hotspot"
+        },
+        {
+            "id": 34,
+            "scene_id": "scene1",
+            "ath": 49,
+            "atv": 47,
+            "metadata": "Test Hotspot"
+        }
+    ]
+}
