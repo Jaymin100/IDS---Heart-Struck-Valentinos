@@ -1,5 +1,21 @@
 #krpano-target {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
+  width: 100vw; /* Take up the full width of the viewport */
+  height: 100vh; /* Take up the full height of the viewport */
+  position: fixed; /* Ensure it covers the entire screen */
+  top: 0;
+  left: 0;
+  z-index: 1; /* Ensure it stays behind the sidebar */
+}
+
+.Sidebar {
+  height: 20vh; /* 20% of the viewport height */
+  width: 300px; /* Fixed width */
+  background-color: rgb(224, 211, 211);
+  position: fixed; /* Fixed positioning */
+  top: 0; /* Position at the top */
+  left: 0; /* Position at the left */
+  z-index: 2; /* Ensure it stays on top of #krpano-target */
+  margin: 10px 0 0 10px; /* Margin: top 20px, left 20px */
+  border: 5px solid black; /* Add a solid black border with 10px width */
+  border-radius: 20px; /* Rounded corners with a 20px radius */
 }
