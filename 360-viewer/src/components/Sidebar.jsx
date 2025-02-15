@@ -1,5 +1,4 @@
 import react from "react";
-import Button from './button.jsx';
 
 
 function Sidebar(){

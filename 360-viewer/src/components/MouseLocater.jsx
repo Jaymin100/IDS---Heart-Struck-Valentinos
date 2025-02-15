@@ -1,6 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import HotspotCoordinates from './HotspotCoordinates.jsx'; // Import child component
 
 const HandleMouseClick = ({ krpano }) => {
+  const [coordinates, setCoordinates] = useState({ ath: null, atv: null });
+
   const handleClick = (e) => {
     if (krpano) {
       // Get mouse coordinates relative to the krpano viewer
@@ -13,6 +16,9 @@ const HandleMouseClick = ({ krpano }) => {
       const { x: ath, y: atv } = krpanoCoords;
 
       console.log('Sphere coordinates:', { ath, atv });
+
+      // Update state with the new coordinates
+      setCoordinates({ ath, atv });
 
       // Add a hotspot at the clicked location
       krpano.call(`
@@ -38,7 +44,11 @@ const HandleMouseClick = ({ krpano }) => {
     };
   }, [krpano]);
 
-  return null;
+  return (
+    <>
+      <HotspotCoordinates ath={coordinates.ath} atv={coordinates.atv} /> {/* Pass coordinates to child */}
+    </>
+  );
 };
 
 export default HandleMouseClick;
