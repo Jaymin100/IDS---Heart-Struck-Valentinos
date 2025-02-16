@@ -1,32 +1,3 @@
 {
-    "hotspots": [
-        {
-            "id": 1739724392330,
-            "ath": 39.52704041426705,
-            "atv": -1.6931211530392754,
-            "scene_id": "defaultScene",
-            "description": null
-        },
-        {
-            "id": 1739724392335,
-            "ath": 39.52704041426705,
-            "atv": -1.6931211530392754,
-            "scene_id": "defaultScene",
-            "description": null
-        },
-        {
-            "id": 1739724393078,
-            "ath": -17.130298355723085,
-            "atv": 12.62309626720381,
-            "scene_id": "defaultScene",
-            "description": null
-        },
-        {
-            "id": 1739724393079,
-            "ath": -17.130298355723085,
-            "atv": 12.62309626720381,
-            "scene_id": "defaultScene",
-            "description": null
-        }
-    ]
+    "hotspots": []
 }
