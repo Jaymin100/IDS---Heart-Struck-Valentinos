@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import "bootstrap/dist/css/bootstrap.min.css";
 
-const RHSSidebar = ({ selectedHotspot, onDescriptionUpdate }) => {
+const RHSSidebar = ({ selectedHotspot, onDescriptionUpdate, onDeleteHotspot }) => {
   const [editableDescription, setEditableDescription] = useState('');
 
   // Update the editable description when the selected hotspot changes
@@ -20,6 +21,13 @@ const RHSSidebar = ({ selectedHotspot, onDescriptionUpdate }) => {
     // Pass the updated description back to the parent component
     if (selectedHotspot) {
       onDescriptionUpdate(selectedHotspot.id, newDescription);
+    }
+  };
+
+  // Handle the delete button click
+  const handleDeleteClick = () => {
+    if (selectedHotspot) {
+      onDeleteHotspot(selectedHotspot.id);
     }
   };
 
@@ -44,6 +52,12 @@ const RHSSidebar = ({ selectedHotspot, onDescriptionUpdate }) => {
             onChange={handleDescriptionChange}
             placeholder="Edit the hotspot description..."
           />
+          <button
+            className="btn btn-danger"
+            onClick={handleDeleteClick}
+          >
+            Delete Hotspot
+          </button>
         </div>
       ) : (
         <p>No hotspot selected.</p>

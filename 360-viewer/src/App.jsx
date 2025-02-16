@@ -8,7 +8,6 @@ function App() {
     <>
       <div className="App">
 
-        <Sidebar /> 
         <RHSSidebar /> 
         <div id="app">
           <KrpanoViewer />

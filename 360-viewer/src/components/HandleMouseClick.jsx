@@ -32,14 +32,42 @@ const HandleMouseClick = ({ krpano, mode, description }) => {
       .catch(error => console.error('Error updating hotspot description:', error));
   };
 
+  // Function to handle hotspot deletion
+  const handleDeleteHotspot = (hotspotId) => {
+    // Remove from local state
+    setHotspots(prevHotspots => 
+      prevHotspots.filter(hotspot => hotspot.id !== hotspotId)
+    );
+
+    // Delete from backend
+    fetch(`http://localhost:5000/api/hotspots/${hotspotId}`, {
+      method: 'DELETE',
+    })
+    .then(response => {
+      if (!response.ok) throw new Error('Delete failed');
+      console.log('Hotspot deleted successfully');
+    })
+    .catch(error => console.error('Error deleting hotspot:', error));
+  };
+
   const handleClick = (e) => {
-    if (krpano && mode === "addHotspot") { // Only proceed if mode is "addHotspot"
+    console.log('handleClick called'); // Debugging line
+    if (krpano && mode === "addHotspot") {
       const rect = e.currentTarget.getBoundingClientRect();
       const mouseX = e.clientX - rect.left;
       const mouseY = e.clientY - rect.top;
 
       const krpanoCoords = krpano.screentosphere(mouseX, mouseY);
       const { x: ath, y: atv } = krpanoCoords;
+       // Check if a hotspot already exists at these coordinates
+    const isDuplicate = hotspots.some(hotspot =>
+      Math.abs(hotspot.ath - ath) < 0.1 && Math.abs(hotspot.atv - atv) < 0.1
+    );
+
+    if (isDuplicate) {
+      console.log('Hotspot already exists at these coordinates');
+      return; // Skip creating a new hotspot
+    }
 
       console.log('Sphere coordinates:', { ath, atv });
 
@@ -155,7 +183,8 @@ const HandleMouseClick = ({ krpano, mode, description }) => {
       )}
       <RHSSidebar 
         selectedHotspot={selectedHotspot} 
-        onDescriptionUpdate={handleDescriptionUpdate} // Pass the function to RHSSidebar
+        onDescriptionUpdate={handleDescriptionUpdate}
+        onDeleteHotspot={handleDeleteHotspot} // Pass the delete function
       />
     </>
   );
