@@ -6,6 +6,7 @@ function App() {
   return (
     <>
       <div className="App">
+
         <Sidebar /> {/* Corrected component name */}
         <div id="app">
           <KrpanoViewer />

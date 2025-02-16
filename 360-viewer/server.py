@@ -25,22 +25,27 @@ def save_data(data):
 @app.route('/coordinates', methods=['POST'])
 def handle_coordinates():
     data = request.get_json()
+    print("Received data:", data)  # Log all incoming data
+
+    id = data.get('id')
     ath = data.get('ath')
     atv = data.get('atv')
+    scene_id = data.get('scene_id')
+    description = data.get('description')
 
-    print(f"Received coordinates: ath={ath}, atv={atv}")
-
+    print(f"Received coordinates: id={id}, ath={ath}, atv={atv}, scene_id={scene_id}, description={description}")
+    
     # Load the existing data from the JSON file
     existing_data = load_data()
 
-    # Add the new coordinates to the data
-    new_hotspot = {"ath": ath, "atv": atv}
+    # Add the new coordinates and other data to the data
+    new_hotspot = {"id": id, "ath": ath, "atv": atv, "scene_id": scene_id, "description": description}
     existing_data["hotspots"].append(new_hotspot)
 
     # Save the updated data back to the JSON file
     save_data(existing_data)
 
-    return jsonify({'status': 'success', 'ath': ath, 'atv': atv})
+    return jsonify({'status': 'success', 'id': id, 'ath': ath, 'atv': atv, 'scene_id': scene_id, 'description': description})
 
 # Get all hotspots
 @app.route("/api/hotspots", methods=["GET"])

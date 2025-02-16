@@ -1,36 +1,91 @@
 import { useEffect, useState } from 'react';
-import HotspotCoordinates from './HotspotCoordinates.jsx'; // Import child component
+import HotspotCoordinates from './HotspotCoordinates.jsx';
 
 const HandleMouseClick = ({ krpano }) => {
   const [coordinates, setCoordinates] = useState({ ath: null, atv: null });
+  const [sceneId, setSceneId] = useState("defaultScene");
+  const [description, setDescription] = useState("A new hotspot");
+  const [hotspots, setHotspots] = useState([]); // State to store hotspots
 
   const handleClick = (e) => {
     if (krpano) {
-      // Get mouse coordinates relative to the krpano viewer
       const rect = e.currentTarget.getBoundingClientRect();
       const mouseX = e.clientX - rect.left;
       const mouseY = e.clientY - rect.top;
 
-      // Convert screen coordinates to spherical coordinates
       const krpanoCoords = krpano.screentosphere(mouseX, mouseY);
       const { x: ath, y: atv } = krpanoCoords;
 
       console.log('Sphere coordinates:', { ath, atv });
 
-      // Update state with the new coordinates
       setCoordinates({ ath, atv });
 
-      // Add a hotspot at the clicked location
-      krpano.call(`
-        addhotspot(hs_${Date.now()});
-        set(hotspot[hs_${Date.now()}].ath, ${ath});
-        set(hotspot[hs_${Date.now()}].atv, ${atv});
-        set(hotspot[hs_${Date.now()}].url, %VIEWER%/hotspots/hotspot.png);
-        set(hotspot[hs_${Date.now()}].scale, 0.1);
-        set(hotspot[hs_${Date.now()}].onclick, trace('Hotspot clicked!'));
-      `);
+      const newHotspot = {
+        ath,
+        atv,
+        scene_id: sceneId,
+        description,
+      };
+
+      // Save the new hotspot to the database
+      fetch('http://localhost:5000/coordinates', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: Date.now(),
+          ath,
+          atv,
+          scene_id: sceneId,
+          description,
+        }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Hotspot saved:', data);
+
+          // Immediately add the new hotspot to the krpano scene
+          const hotspotId = data.id; // Assuming the server responds with the newly added hotspot's ID
+          krpano.call(`
+            addhotspot(hs_${hotspotId});
+            set(hotspot[hs_${hotspotId}].ath, ${ath});
+            set(hotspot[hs_${hotspotId}].atv, ${atv});
+            set(hotspot[hs_${hotspotId}].url, %VIEWER%/hotspots/hotspot.png);
+            set(hotspot[hs_${hotspotId}].scale, 0.1);
+            set(hotspot[hs_${hotspotId}].onclick, trace('Hotspot clicked!'));
+          `);
+
+          // Update the hotspots state
+          setHotspots(prevHotspots => [
+            ...prevHotspots,
+            { id: hotspotId, ath, atv, description }
+          ]);
+        })
+        .catch(error => console.error('Error saving hotspot:', error));
     }
   };
+
+  useEffect(() => {
+    // Fetch existing hotspots from the server when the component mounts
+    fetch(`http://localhost:5000/api/hotspots?scene_id=${sceneId}`)
+      .then(response => response.json())
+      .then(data => {
+        setHotspots(data); // Set the hotspots from the server
+        // Add the hotspots to krpano
+        data.forEach(hotspot => {
+          krpano.call(`
+            addhotspot(hs_${hotspot.id});
+            set(hotspot[hs_${hotspot.id}].ath, ${hotspot.ath});
+            set(hotspot[hs_${hotspot.id}].atv, ${hotspot.atv});
+            set(hotspot[hs_${hotspot.id}].url, %VIEWER%/hotspots/hotspot.png);
+            set(hotspot[hs_${hotspot.id}].scale, 0.1);
+            set(hotspot[hs_${hotspot.id}].onclick, trace('Hotspot clicked!'));
+          `);
+        });
+      })
+      .catch(error => console.error('Error fetching hotspots:', error));
+  }, [krpano, sceneId]);
 
   useEffect(() => {
     const container = document.getElementById('krpano-target');
@@ -46,7 +101,12 @@ const HandleMouseClick = ({ krpano }) => {
 
   return (
     <>
-      <HotspotCoordinates ath={coordinates.ath} atv={coordinates.atv} /> {/* Pass coordinates to child */}
+      <HotspotCoordinates 
+        ath={coordinates.ath} 
+        atv={coordinates.atv} 
+        sceneId={sceneId} 
+        description={description} 
+      />
     </>
   );
 };
