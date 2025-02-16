@@ -57,6 +57,7 @@ Also run all of these in your terminal.
 - pip install flask
 - pip install flask coors
 - npm i bootstrap@5.3.3
+  
 Once all of those are installed you can do this to run the backend server in the 360-viewer folder:
 python "server.py"
 
