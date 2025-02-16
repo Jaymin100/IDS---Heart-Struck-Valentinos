@@ -8,7 +8,7 @@
 }
 
 .Sidebar {
-  height: 20vh; /* 20% of the viewport height */
+  height: 27vh; /* 20% of the viewport height */
   width: 300px; /* Fixed width */
   background-color: rgb(224, 211, 211);
   position: fixed; /* Fixed positioning */
@@ -30,4 +30,17 @@
   margin: 10px 0 0 10px; /* Margin: top 20px, left 20px */
   border: 5px solid black; /* Add a solid black border with 10px width */
   border-radius: 20px; /* Rounded corners with a 20px radius */
+}
+
+.Sidebar input:disabled {
+  background-color: #e9ecef; /* Lighter gray background for disabled state */
+  color: #6c757d; /* Text color for disabled state */
+  cursor: not-allowed; /* Change cursor to indicate it's not clickable */
+  border: 1px solid #ced4da; /* Border color to indicate disabled state */
+}
+
+/* Optional: Focus Styling for Input */
+.Sidebar input:focus {
+  border-color: #007bff; /* Blue border on focus */
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Light blue glow on focus */
 }

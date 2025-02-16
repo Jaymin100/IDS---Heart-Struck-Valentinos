@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import loadKrpano from '../loadKrpano';
-import HandleMouseClick from './MouseLocater';
+import HandleMouseClick from './HandleMouseClick';
 import Sidebar from './Sidebar'; // Import the Sidebar
 
 const KrpanoViewer = () => {
