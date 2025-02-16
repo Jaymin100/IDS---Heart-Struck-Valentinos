@@ -39,6 +39,11 @@ const HandleMouseClick = ({ krpano, mode, description }) => {
       prevHotspots.filter(hotspot => hotspot.id !== hotspotId)
     );
 
+    // Remove from krpano viewer
+    if (krpano) {
+      krpano.call(`removehotspot(hs_${hotspotId})`);
+    }
+
     // Delete from backend
     fetch(`http://localhost:5000/api/hotspots/${hotspotId}`, {
       method: 'DELETE',
