@@ -1,7 +1,7 @@
-  import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
   import HotspotCoordinates from './HotspotCoordinates.jsx';
 
-  const HandleMouseClick = ({ krpano }) => {
+  const HandleMouseClick = ({ krpano,mode }) => {
     const [coordinates, setCoordinates] = useState({ ath: null, atv: null });
     const [sceneId, setSceneId] = useState("defaultScene");
     const [description, setDescription] = useState("A new hotspot");
@@ -46,7 +46,9 @@
             console.log('Hotspot saved:', data);
 
             // Immediately add the new hotspot to the krpano scene
-            const hotspotId = data.id; // Assuming the server responds with the newly added hotspot's ID
+            const hotspotId = data.id;
+            if (mode === "addHotspot") {
+             // Assuming the server responds with the newly added hotspot's ID
             krpano.call(`
               addhotspot(hs_${hotspotId});
               set(hotspot[hs_${hotspotId}].ath, ${ath});
@@ -55,7 +57,9 @@
               set(hotspot[hs_${hotspotId}].scale, 0.1);
               set(hotspot[hs_${hotspotId}].onclick, trace('Hotspot clicked!dfdd'));
             `);
-
+            }else if (mode ==="select"){
+              console.log("No Action");
+            }
             // Update the hotspots state
             setHotspots(prevHotspots => [
               ...prevHotspots,
@@ -85,7 +89,7 @@
           });
         })
         .catch(error => console.error('Error fetching hotspots:', error));
-    }, [krpano, sceneId]);
+    }, [krpano, sceneId, mode]);
 
     useEffect(() => {
       const container = document.getElementById('krpano-target');
@@ -97,16 +101,16 @@
           container.removeEventListener('click', handleClick);
         }
       };
-    }, [krpano]);
+    }, [krpano, mode, handleClick]);
 
     return (
       <>
-        <HotspotCoordinates 
+        {mode === "addHotspot" && (<HotspotCoordinates 
           ath={coordinates.ath} 
           atv={coordinates.atv} 
           sceneId={sceneId} 
           description={description} 
-        />
+        />)}
       </>
     );
   };
