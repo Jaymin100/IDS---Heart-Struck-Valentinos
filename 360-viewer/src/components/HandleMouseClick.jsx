@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import HotspotCoordinates from './HotspotCoordinates.jsx';
 
-const HandleMouseClick = ({ krpano, mode }) => {
+const HandleMouseClick = ({ krpano, mode, description }) => {
   const [coordinates, setCoordinates] = useState({ ath: null, atv: null });
   const [sceneId, setSceneId] = useState("defaultScene");
-  const [description, setDescription] = useState("A new hotspot");
   const [hotspots, setHotspots] = useState([]); // State to store hotspots
 
   const handleClick = (e) => {
