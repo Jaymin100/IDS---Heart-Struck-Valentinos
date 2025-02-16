@@ -7,10 +7,14 @@
 	 - `mfitzer_ids`
 	 - `jknudson-ids`
 
-## Team:  _insert team name_
+## Team:  _LoveStruckValentines_
 
-- _Member names here_
-
+- Jaymin Leon Swedlund
+- Saad Arshad Pervez Mughal
+- Mujahid Mohammed
+- Zoljargal Enkhbayar
+- safal karki
+- Pemang Sang Sherpa
 ## Challenge Description
 
 Immersion Data Solutions (IDS) captures and displays immersive 360° panoramic images within our cutting-edge digital twin platform. Users can navigate seamlessly between panoramic views, track their orientation within the environment, and see their precise location on a map.
@@ -22,8 +26,11 @@ For this challenge, we're looking to take our 360° viewer to the next level by 
 - **JavaScript** – for core functionality and dynamic interactions.
 - **KRPano** – a powerful 360° rendering library for panoramic image visualization.   
 - **ReactJS** – to create a smooth and responsive user interface for managing POIs.
-- **Backend** – any backend technology can be used for POI management if backend is desired
-
+- **Python** - python was used for our backend because thats what flasks uses.
+- **Flask** – Our backend was flask for storing and managing data through json.
+- **Flask-Coors** - Flask-CORS is an extension for Flask that enables Cross-Origin Resource Sharing (CORS), allowing your Flask app to handle requests from different origins (domains, ports, or protocols).
+- **Bootstrap** - Bootstrap is an open-source CSS framework for developing responsive,applications quickly and efficiently.
+- **NodeJS** - A runtime environment that allows JavaScript to be executed on the server side
 ## Test Data
 
 This challenge uses a sample krpano xml file.
@@ -44,11 +51,17 @@ This challenge uses a sample krpano xml file.
 - Enable users to add comments to a POI
 
 ## How to Run
-
+You need Python and NodeJS installed on your device.
 In the 360-viewer folder, run `npm install` if the app has not been run before. Then run `npm run dev` to run the app locally.
+Also run all of these in your terminal.
+pip install flask
+pip install flask coors
+npm i bootstrap@5.3.3
+Once all of those are installed you can do this to run the backend server in the 360-viewer folder:
+python "server.py"
+
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-_Teams update this section with any additional instructions on how to run the application._
 
 ## Hackathon Submission Checklist
 

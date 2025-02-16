@@ -1,17 +1,19 @@
-import React, { useEffect } from 'react';
-import loadKrpano from './loadKrpano';
-
+import KrpanoViewer from './components/KrpanoViewer.jsx'; // <-- Correct path
 import './App.css';
+import Sidebar from './components/Sidebar.jsx'
+import RHSSidebar from './components/RHSSidebar.jsx';
 
 function App() {
-  useEffect(() => {
-    loadKrpano();
-  }, []);
-
   return (
-    <div id="app">
-      <div id="krpano-target"></div>
-    </div>
+    <>
+      <div className="App">
+
+        <RHSSidebar /> 
+        <div id="app">
+          <KrpanoViewer />
+        </div>
+      </div>
+    </>
   );
 }
 

@@ -1,5 +1,101 @@
 #krpano-target {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
+  width: 100vw; /* Take up the full width of the viewport */
+  height: 100vh; /* Take up the full height of the viewport */
+  position: fixed; /* Ensure it covers the entire screen */
+  top: 0;
+  left: 0;
+  z-index: 1; /* Ensure it stays behind the sidebar */
+}
+
+
+.RHSSidebar {
+  position: fixed; /* Fix the sidebar to the viewport */
+  top: 20px; /* Distance from the top of the screen */
+  right: 20px; /* Distance from the right of the screen */
+  width: 350px; /* Fixed width for the sidebar */
+  max-height: 90vh; /* Limit height to 90% of the viewport height */
+  overflow-y: auto; /* Add scroll if content overflows */
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  z-index: 1000; /* Ensure it appears above other elements */
+}
+
+.RHSSidebar h3 {
+  font-size: 1.5rem;
+  color: #0d6efd;
+  margin-bottom: 1.5rem;
+}
+
+.RHSSidebar textarea {
+  resize: none;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 0.9rem;
+}
+
+.RHSSidebar textarea:focus {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
+}
+
+.RHSSidebar .btn-danger {
+  background-color: #dc3545;
+  border: none;
+  padding: 10px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.RHSSidebar .btn-danger:hover {
+  background-color: #bb2d3b;
+}
+
+.RHSSidebar .text-muted {
+  font-size: 1rem;
+  color: #6c757d;
+}
+.Sidebar {
+  position: fixed; /* Fix the sidebar to the viewport */
+  top: 20px; /* Distance from the top of the screen */
+  left: 20px; /* Distance from the right of the screen */
+  width: 300px; /* Fixed width for the sidebar */
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  z-index: 1000; /* Ensure it appears above other elements */
+}
+
+.Sidebar h3 {
+  font-size: 1.25rem;
+  color: #0d6efd;
+  margin-bottom: 1rem;
+}
+
+.Sidebar .btn-dark {
+  background-color: #343a40;
+  border: none;
+  padding: 10px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.Sidebar .btn-dark:hover {
+  background-color: #23272b;
+}
+
+.Sidebar .btn-dark:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.info_box{
+  outline: none;
+  border: none;
+  box-shadow: none;
+  user-select: none; /* Prevent text selection */
+  pointer-events: none; /* Disable interaction */
+  background-color: transparent; /* Optional: make it blend with the background */
 }
