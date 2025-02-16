@@ -1,13 +1,15 @@
 import KrpanoViewer from './components/KrpanoViewer.jsx'; // <-- Correct path
 import './App.css';
 import Sidebar from './components/Sidebar.jsx'
+import RHSSidebar from './components/RHSSidebar.jsx';
 
 function App() {
   return (
     <>
       <div className="App">
 
-        <Sidebar /> {/* Corrected component name */}
+        <Sidebar /> 
+        <RHSSidebar /> 
         <div id="app">
           <KrpanoViewer />
         </div>

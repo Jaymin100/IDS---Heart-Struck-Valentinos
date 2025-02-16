@@ -19,3 +19,15 @@
   border: 5px solid black; /* Add a solid black border with 10px width */
   border-radius: 20px; /* Rounded corners with a 20px radius */
 }
+.RHSSidebar {
+  height: 60vh; /* 20% of the viewport height */
+  width: 400px; /* Fixed width */
+  background-color: rgb(224, 211, 211);
+  position: fixed; /* Fixed positioning */
+  top: 0; /* Position at the top */
+  right: 0; /* Position at the left */
+  z-index: 2; /* Ensure it stays on top of #krpano-target */
+  margin: 10px 0 0 10px; /* Margin: top 20px, left 20px */
+  border: 5px solid black; /* Add a solid black border with 10px width */
+  border-radius: 20px; /* Rounded corners with a 20px radius */
+}
