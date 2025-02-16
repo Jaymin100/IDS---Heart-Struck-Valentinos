@@ -5,7 +5,7 @@
             "ath": -50.86290368595047,
             "atv": 3.3070968434868955,
             "scene_id": "defaultScene",
-            "description": "A new hotspot"
+            "description": "hello world"
         },
         {
             "id": 1739676359967,
@@ -62,6 +62,27 @@
             "atv": -12.784336540394234,
             "scene_id": "defaultScene",
             "description": "A new hotspot"
+        },
+        {
+            "id": 1739719951874,
+            "ath": -37.18761380060255,
+            "atv": -4.9185898474660545,
+            "scene_id": "defaultScene",
+            "description": null
+        },
+        {
+            "id": 1739719965763,
+            "ath": -37.18761380060255,
+            "atv": -4.9185898474660545,
+            "scene_id": "defaultScene",
+            "description": null
+        },
+        {
+            "id": 1739719967762,
+            "ath": -11.125437455686438,
+            "atv": -33.31618806273279,
+            "scene_id": "defaultScene",
+            "description": null
         }
     ]
 }

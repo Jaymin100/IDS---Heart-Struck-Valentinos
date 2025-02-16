@@ -18,7 +18,7 @@ const HandleMouseClick = ({ krpano, mode, description }) => {
     );
 
     // Update the description in the backend
-    fetch(`http://localhost:5000/coordinates/${hotspotId}`, {
+    fetch(`http://localhost:5000/api/hotspots/${hotspotId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
