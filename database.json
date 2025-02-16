@@ -132,6 +132,20 @@
             "atv": -29.681035309132614,
             "scene_id": "defaultScene",
             "description": "A new hotspot"
+        },
+        {
+            "id": 1739667465430,
+            "ath": -28.895199293375242,
+            "atv": -24.326509163584944,
+            "scene_id": "defaultScene",
+            "description": "A new hotspot"
+        },
+        {
+            "id": 1739667465811,
+            "ath": -42.756744625909676,
+            "atv": -16.025203592413025,
+            "scene_id": "defaultScene",
+            "description": "A new hotspot"
         }
     ]
 }
