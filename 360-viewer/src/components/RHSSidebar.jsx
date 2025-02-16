@@ -46,7 +46,7 @@ const RHSSidebar = ({ selectedHotspot, onDescriptionUpdate, onDeleteHotspot }) =
             <textarea
               readOnly
               rows="4"
-              className='form-control bg-light'
+              className='form-control bg-light info_box'
               value={`ID: ${selectedHotspot.id}\nATH: ${selectedHotspot.ath}\nATV: ${selectedHotspot.atv}`}
             />
           </div>

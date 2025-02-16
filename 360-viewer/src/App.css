@@ -7,6 +7,7 @@
   z-index: 1; /* Ensure it stays behind the sidebar */
 }
 
+
 .RHSSidebar {
   position: fixed; /* Fix the sidebar to the viewport */
   top: 20px; /* Distance from the top of the screen */
@@ -88,4 +89,13 @@
 .Sidebar .btn-dark:disabled {
   background-color: #6c757d;
   cursor: not-allowed;
+}
+
+.info_box{
+  outline: none;
+  border: none;
+  box-shadow: none;
+  user-select: none; /* Prevent text selection */
+  pointer-events: none; /* Disable interaction */
+  background-color: transparent; /* Optional: make it blend with the background */
 }
