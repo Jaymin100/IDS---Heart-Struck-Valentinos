@@ -1,18 +1,3 @@
 {
-    "hotspots": [
-        {
-            "id": 1739727773260,
-            "ath": -17.94940299291386,
-            "atv": -13.92194607286523,
-            "scene_id": "defaultScene",
-            "description": "2"
-        },
-        {
-            "id": 1739727782220,
-            "ath": 16.847199436467122,
-            "atv": -4.048077725980448,
-            "scene_id": "defaultScene",
-            "description": "3"
-        }
-    ]
+    "hotspots": []
 }
