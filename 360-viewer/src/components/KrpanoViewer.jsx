@@ -5,7 +5,7 @@ import Sidebar from './Sidebar'; // Import the Sidebar
 
 const KrpanoViewer = () => {
   const [krpano, setKrpano] = useState(null);
-  const [currentMode, setCurrentMode] = useState("addHotspot"); // Set initial mode to "addHotspot"
+  const [currentMode, setCurrentMode] = useState("select"); // Set initial mode to "select"
 
   const handleSelectMode = () => setCurrentMode("select");
   const handleAddHotspotMode = () => setCurrentMode("addHotspot");
