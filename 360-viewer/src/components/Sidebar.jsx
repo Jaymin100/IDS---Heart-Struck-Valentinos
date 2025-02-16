@@ -1,7 +1,8 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import '../App.css'; // Make sure to import the CSS file where you define custom styles
 
-function Sidebar({ currentMode, onSelectMode, onAddHotspot, setDescription }) {
+function Sidebar({ currentMode, onSelectMode, onAddHotspot }) {
   return (
     <div className="Sidebar d-flex flex-column gap-2 p-3">
       <button
@@ -19,7 +20,7 @@ function Sidebar({ currentMode, onSelectMode, onAddHotspot, setDescription }) {
         Add Hotspot Mode
       </button>
 
-      
+
     </div>
   );
 }

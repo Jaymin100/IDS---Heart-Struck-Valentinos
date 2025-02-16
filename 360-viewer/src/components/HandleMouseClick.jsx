@@ -2,10 +2,9 @@ import { useEffect, useState } from 'react';
 import HotspotCoordinates from './HotspotCoordinates.jsx';
 import RHSSidebar from './RHSSidebar.jsx'; // Import the RHSSidebar component
 
-const HandleMouseClick = ({ krpano, mode }) => {
+const HandleMouseClick = ({ krpano, mode, description }) => {
   const [coordinates, setCoordinates] = useState({ ath: null, atv: null });
   const [sceneId, setSceneId] = useState("defaultScene");
-  const [description, setDescription] = useState("A new hotspot");
   const [hotspots, setHotspots] = useState([]); // State to store hotspots
   const [selectedHotspot, setSelectedHotspot] = useState(null); // State to track the selected hotspot
 
