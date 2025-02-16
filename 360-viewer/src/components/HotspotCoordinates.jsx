@@ -22,7 +22,7 @@ const HotspotCoordinates = ({ ath, atv, sceneId, description }) => {
     }
   }, [ath, atv, sceneId, description]);
 
-  return null; // No UI needed
+  return null;
 };
 
 export default HotspotCoordinates;
