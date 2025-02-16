@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
+import '../App.css'; // Make sure to import the CSS file where you define custom styles
+
 
 const RHSSidebar = ({ selectedHotspot, onDescriptionUpdate, onDeleteHotspot }) => {
   const [editableDescription, setEditableDescription] = useState('');
+  const [isDeleted, setIsDeleted] = useState(false);
 
-  // Update the editable description when the selected hotspot changes
+  // Reset editableDescription and isDeleted when selectedHotspot changes
   useEffect(() => {
     if (selectedHotspot) {
-      setEditableDescription(selectedHotspot.description);
+      setEditableDescription(selectedHotspot.description || ''); // Reset to the new hotspot's description
+      setIsDeleted(false); // Reset isDeleted when a new hotspot is selected
     } else {
       setEditableDescription(''); // Clear the text box if no hotspot is selected
     }
@@ -19,7 +23,7 @@ const RHSSidebar = ({ selectedHotspot, onDescriptionUpdate, onDeleteHotspot }) =
     setEditableDescription(newDescription);
 
     // Pass the updated description back to the parent component
-    if (selectedHotspot) {
+    if (selectedHotspot && !isDeleted) {
       onDescriptionUpdate(selectedHotspot.id, newDescription);
     }
   };
@@ -28,39 +32,43 @@ const RHSSidebar = ({ selectedHotspot, onDescriptionUpdate, onDeleteHotspot }) =
   const handleDeleteClick = () => {
     if (selectedHotspot) {
       onDeleteHotspot(selectedHotspot.id);
+      setIsDeleted(true); // Set the deleted state to true
     }
   };
 
   return (
-    <div className='RHSSidebar'>
-      <h3>Selected Hotspot Information</h3>
-      {selectedHotspot ? (
+    <div className='RHSSidebar p-4 bg-light border rounded shadow-sm'>
+      <h3 className='mb-4 text-primary'>Selected Hotspot Information</h3>
+      {selectedHotspot && !isDeleted ? (
         <div>
-          {/* Read-only text box for hotspot details */}
-          <textarea
-            readOnly
-            rows="5"
-            cols="30"
-            value={`ID: ${selectedHotspot.id}\nATH: ${selectedHotspot.ath}\nATV: ${selectedHotspot.atv}`}
-            style={{ marginBottom: '10px' }}
-          />
-          {/* Editable text box for description */}
-          <textarea
-            rows="5"
-            cols="30"
-            value={editableDescription}
-            onChange={handleDescriptionChange}
-            placeholder="Edit the hotspot description..."
-          />
+          <div className='mb-3'>
+            <label className='form-label fw-bold'>Hotspot Details</label>
+            <textarea
+              readOnly
+              rows="4"
+              className='form-control bg-light'
+              value={`ID: ${selectedHotspot.id}\nATH: ${selectedHotspot.ath}\nATV: ${selectedHotspot.atv}`}
+            />
+          </div>
+          <div className='mb-3'>
+            <label className='form-label fw-bold'>Description</label>
+            <textarea
+              rows="4"
+              className='form-control'
+              value={editableDescription}
+              onChange={handleDescriptionChange}
+              placeholder="Edit the hotspot description..."
+            />
+          </div>
           <button
-            className="btn btn-danger"
+            className='btn btn-danger w-100'
             onClick={handleDeleteClick}
           >
             Delete Hotspot
           </button>
         </div>
       ) : (
-        <p>No hotspot selected.</p>
+        <p className='text-muted text-center'>{isDeleted ? "Deleted" : "No hotspot selected."}</p>
       )}
     </div>
   );

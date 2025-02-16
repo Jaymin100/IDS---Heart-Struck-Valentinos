@@ -19,19 +19,6 @@
   border: 5px solid black; /* Add a solid black border with 10px width */
   border-radius: 20px; /* Rounded corners with a 20px radius */
 }
-.RHSSidebar {
-  height: 60vh; /* 20% of the viewport height */
-  width: 400px; /* Fixed width */
-  background-color: rgb(224, 211, 211);
-  position: fixed; /* Fixed positioning */
-  top: 0; /* Position at the top */
-  right: 0; /* Position at the left */
-  z-index: 2; /* Ensure it stays on top of #krpano-target */
-  margin: 10px 0 0 10px; /* Margin: top 20px, left 20px */
-  border: 5px solid black; /* Add a solid black border with 10px width */
-  border-radius: 20px; /* Rounded corners with a 20px radius */
-}
-
 .Sidebar input:disabled {
   background-color: #e9ecef; /* Lighter gray background for disabled state */
   color: #6c757d; /* Text color for disabled state */
@@ -43,4 +30,53 @@
 .Sidebar input:focus {
   border-color: #007bff; /* Blue border on focus */
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Light blue glow on focus */
+}
+.RHSSidebar {
+  position: fixed; /* Fix the sidebar to the viewport */
+  top: 20px; /* Distance from the top of the screen */
+  right: 20px; /* Distance from the right of the screen */
+  width: 350px; /* Fixed width for the sidebar */
+  max-height: 90vh; /* Limit height to 90% of the viewport height */
+  overflow-y: auto; /* Add scroll if content overflows */
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  z-index: 1000; /* Ensure it appears above other elements */
+}
+
+.RHSSidebar h3 {
+  font-size: 1.5rem;
+  color: #0d6efd;
+  margin-bottom: 1.5rem;
+}
+
+.RHSSidebar textarea {
+  resize: none;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 0.9rem;
+}
+
+.RHSSidebar textarea:focus {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
+}
+
+.RHSSidebar .btn-danger {
+  background-color: #dc3545;
+  border: none;
+  padding: 10px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.RHSSidebar .btn-danger:hover {
+  background-color: #bb2d3b;
+}
+
+.RHSSidebar .text-muted {
+  font-size: 1rem;
+  color: #6c757d;
 }
