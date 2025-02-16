@@ -34,6 +34,34 @@
             "atv": 0.39851324882357037,
             "scene_id": "defaultScene",
             "description": "A new hotspot"
+        },
+        {
+            "id": 1739685178262,
+            "ath": -12.954733395109201,
+            "atv": 3.5639468392556264,
+            "scene_id": "defaultScene",
+            "description": "A new hotspot"
+        },
+        {
+            "id": 1739685178265,
+            "ath": -12.954733395109201,
+            "atv": 3.5639468392556264,
+            "scene_id": "defaultScene",
+            "description": "A new hotspot"
+        },
+        {
+            "id": 1739685178901,
+            "ath": -0.05980764395906135,
+            "atv": -12.784336540394234,
+            "scene_id": "defaultScene",
+            "description": "A new hotspot"
+        },
+        {
+            "id": 1739685182390,
+            "ath": -0.05980764395906135,
+            "atv": -12.784336540394234,
+            "scene_id": "defaultScene",
+            "description": "A new hotspot"
         }
     ]
 }
