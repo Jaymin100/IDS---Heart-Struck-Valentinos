@@ -54,9 +54,9 @@ This challenge uses a sample krpano xml file.
 You need Python and NodeJS installed on your device.
 In the 360-viewer folder, run `npm install` if the app has not been run before. Then run `npm run dev` to run the app locally.
 Also run all of these in your terminal.
-pip install flask
-pip install flask coors
-npm i bootstrap@5.3.3
+- pip install flask
+- pip install flask coors
+- npm i bootstrap@5.3.3
 Once all of those are installed you can do this to run the backend server in the 360-viewer folder:
 python "server.py"
 
